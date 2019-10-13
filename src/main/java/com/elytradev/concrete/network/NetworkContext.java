@@ -151,6 +151,7 @@ public final class NetworkContext {
 
 
 	@SubscribeEvent
+	@SideOnly(Side.SERVER)
 	public void onServerCustomPacket(ServerCustomPacketEvent e) {
 		ByteBuf payload = e.getPacket().payload();
 		Message m = readPacket(e.side(), payload);
@@ -158,7 +159,6 @@ public final class NetworkContext {
 	}
 	
 	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
 	public void onClientCustomPacket(ClientCustomPacketEvent e) {
 		ByteBuf payload = e.getPacket().payload();
 		Message m = readPacket(e.side(), payload);
